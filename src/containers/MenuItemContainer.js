@@ -5,7 +5,7 @@ const mapDispatchToProps = (dispatch,ownProps)=>{
     return{
         remove:()=>dispatch(removeItem(ownProps.uuid)),
         updatePrice:(price)=>dispatch(updatePrice(ownProps.uuid,price)),
-        updateQunatity:(price) =>dispatch(uppdateQuantity(ownProps.uuid,quantity))
+        updateQuantity:(quantity) =>dispatch(updateQuantity(ownProps.uuid,quantity))
     }
 }
 
