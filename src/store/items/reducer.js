@@ -1,5 +1,5 @@
 let id = 1;
-import { ITEM_ADDED, ITEM_REMOVED, ITEM_PRICE_UPDATED } from "./actions";
+import { ITEM_ADDED, ITEM_REMOVED, ITEM_PRICE_UPDATED, ITME_QUANTITY_UPDATED } from "./actions";
 export const intialItems = [
     { uuid: 1, name: 'Awsome Tofu Roast', price: 14, quantity: 1 },
     { uuid: 2, name: 'Vegan Ham Sandwich', price: 12, quantity: 1 }
@@ -13,12 +13,19 @@ export const reducer = (state=intialItems,action)=>{
     if(action.type===ITEM_REMOVED){
         return state.filter(item=>item.uuid!==action.payload.uuid);
     }
-    if(action.typ===ITEM_PRICE_UPDATED){
+    if(action.type===ITEM_PRICE_UPDATED){
         return state.map(item=>{
             if(item.uuid===action.payload.uuid){
                 return {...item,price:action.payload.price} 
             }
             return item;
+        })
+    }
+    if(action.type === ITME_QUANTITY_UPDATED){
+        return state.map(item=>{
+            if(item.uuid===action.payload.uuid){
+                return {...item,quantity:action.payload.quantity}
+            }
         })
     }
     return state;
